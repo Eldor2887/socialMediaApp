@@ -38,6 +38,8 @@ passport.use(new FacebookStrategy({
                 new User(newUser).save()
                 .then((user) => {
                     done(null, user);
+                }).catch((err) => {
+                    done(err);
                 })
             }
         })
