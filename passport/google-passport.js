@@ -23,10 +23,7 @@ passport.use(new GoogleStrategy({
        console.log(profile);
        User.findOne({
            google: profile.id
-       }).then((err,user) => {
-           if(err){
-               throw err;
-           }
+       }).then((user) => {
            if(user){
                done(null, user);
            }else{
@@ -43,6 +40,10 @@ passport.use(new GoogleStrategy({
                .then((user) => {
                    done(null,user);
                })
+           }
+       }).catch((err) => {
+           if(err){
+               throw err;
            }
        })
     }
