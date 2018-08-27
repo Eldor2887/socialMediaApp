@@ -16,7 +16,7 @@ passport.deserializeUser(function (id, done) {
 passport.use(new FacebookStrategy({
     clientID: keys.FacebookClientID,
     clientSecret: keys.FacebookClientSecret,
-    callbackURL: "https://fierce-stream-18330.herokuapp.com/auth/facebook/callback",
+    callbackURL: "/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'name', 'photos', 'email'],
     proxy: true
     },
@@ -38,8 +38,6 @@ passport.use(new FacebookStrategy({
                 new User(newUser).save()
                 .then((user) => {
                     done(null, user);
-                }).catch((err) => {
-                    done(err);
                 })
             }
         })
