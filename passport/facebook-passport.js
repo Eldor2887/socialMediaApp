@@ -17,9 +17,7 @@ passport.use(new FacebookStrategy({
     clientID: keys.FacebookClientID,
     clientSecret: keys.FacebookClientSecret,
     callbackURL: "https://fierce-stream-18330.herokuapp.com/auth/facebook/callback",
-    profileFields: ['id', 'displayName', 'name', 'photos', 'email'],
-    proxy: true,
-    passReqToCallback: true
+    profileFields: ['id', 'displayName', 'name', 'photos', 'email']
     },
     (accessToken, refreshToken, profile, done) => {
         console.log(profile);
