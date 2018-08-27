@@ -40,6 +40,10 @@ passport.use(new FacebookStrategy({
                     done(null, user);
                 })
             }
+        }).catch((err) => {
+            if(err){
+                throw err;
+            }
         })
     }
 ));
