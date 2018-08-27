@@ -23,7 +23,10 @@ passport.use(new GoogleStrategy({
        console.log(profile);
        User.findOne({
            google: profile.id
-       }).then((user) => {
+       }).then((err,user) => {
+           if(err){
+               throw err;
+           }
            if(user){
                done(null, user);
            }else{
