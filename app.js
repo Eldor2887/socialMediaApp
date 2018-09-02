@@ -115,6 +115,14 @@ app.get('/profile', ensureAuthentication,(req, res) => {
         });
     })
 });
+// HANDLE ROUTE FOR ALL USERS
+app.get('/users', (req, res) => {
+    User.find({}).then((users) => {
+        res.render('users', {
+            users:users
+        });
+    });
+});
 // HANDLE EMAIL POST ROUTE
 app.post('/addEmail', (req, res) => {
     const email = req.body.email;
