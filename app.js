@@ -226,14 +226,48 @@ app.put('/:id', (req, res) => {
         });
     });
 });
+// HANDLE DELETE ROUTE
+app.delete('/:id', (req, res) => {
+    Post.remove({_id: req.params.id})
+    .then(() => {
+        res.redirect('profile');
+    });
+});
 // handle posts route
 app.get('/posts', ensureAuthentication, (req, res) => {
     Post.find({status:'public'})
     .populate('user')
+    .populate('comments.commentUser')
     .sort({date:'desc'})
     .then((posts) => {
         res.render('publicPosts', {
             posts:posts
+        });
+    });
+});
+// display single users all public posts
+app.get('/showposts/:id', (req, res) => {
+    Post.find({user: req.params.id, status: 'public'})
+    .populate('user')
+    .sort({date: 'desc'})
+    .then((posts) => {
+        res.render('showUserPosts', {
+            posts:posts
+        });
+    });
+});
+// save comments into database
+app.post('/addComment/:id', (req, res) => {
+    Post.findOne({_id: req.params.id})
+    .then((post) => {
+        const newComment = {
+            commentBody: req.body.commentBody,
+            commentUser: req.user._id
+        }
+        post.comments.push(newComment)
+        post.save()
+        .then(() => {
+            res.redirect('/posts');
         });
     });
 });
