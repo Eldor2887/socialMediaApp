@@ -46,6 +46,8 @@ h1{
 #main{
     margin-top: 60px;
     margin-bottom: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
 }
 .col-sm-4{
     margin-bottom: 10px;
@@ -63,4 +65,18 @@ h1{
 #comment-user-picture{
     width: 65px;
     height: auto;
+}
+#success-page {
+    text-align: center;
+    color: green;
+}
+#users-image{
+    width: 100px;
+    height: 100px;
+}
+#users-box {
+    margin: 5px 5px 5px 5px;
+}
+.row{
+    width: 100%;
 }

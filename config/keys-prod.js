@@ -5,5 +5,7 @@ module.exports = {
     FacebookClientID: process.env.FACEBOOK_CLIENT_ID,
     FacebookClientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     InstagramClientID: process.env.INSTAGRAM_CLIENT_ID,
-    InstagramClientSecret: process.env.INSTAGRAM_CLIENT_SECRET
+    InstagramClientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
+    StripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    StripeSecretKey: process.env.STRIPE_SECRET_KEY
 }
